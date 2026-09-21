@@ -3,17 +3,68 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DOOHMS Test 03 - Plain HTML5 Video</title>
+<title>DOOHMS Test 04 - HTML5 JavaScript Control</title>
+<style>
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #000;
+    color: #fff;
+    font-family: Arial, sans-serif;
+  }
+  body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  #test {
+    width: 100%;
+    text-align: center;
+  }
+  #title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 24px;
+  }
+  #status {
+    font-size: 18px;
+    margin-bottom: 18px;
+  }
+  #counter {
+    font-size: 48px;
+    font-weight: bold;
+  }
+  #time {
+    font-size: 16px;
+    margin-top: 18px;
+  }
+</style>
 </head>
-<body style="margin:0;background:#000;">
-<video
-  src="serangoon-eid.mp4"
-  autoplay
-  muted
-  loop
-  playsinline
-  controls
-  style="width:100vw;height:100vh;object-fit:contain;">
-</video>
+<body>
+  <div id="test">
+    <div id="title">DOOHMS TEST 04</div>
+    <div id="status">JAVASCRIPT IS RUNNING</div>
+    <div id="counter">000</div>
+    <div id="time">STARTING...</div>
+  </div>
+
+<script>
+(function () {
+  var count = 0;
+  var counter = document.getElementById("counter");
+  var time = document.getElementById("time");
+
+  function tick() {
+    count += 1;
+    counter.textContent = String(count).padStart(3, "0");
+    time.textContent = "TIME: " + new Date().toLocaleTimeString();
+  }
+
+  tick();
+  setInterval(tick, 1000);
+})();
+</script>
 </body>
 </html>
